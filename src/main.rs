@@ -1,5 +1,4 @@
 use colored::*;
-<<<<<<< HEAD
 use rand::seq::SliceRandom;
 use std::{
     collections::HashMap,
@@ -31,47 +30,10 @@ fn get_user_input(viable_words: &HashMap<&'static str, i32>) -> String {
             return input;
         } else {
             println!("That's not a valid word. Please try again!");
-=======
-use rand::prelude::SliceRandom;
-
-const ALL_WORDS: &str = include_str!("words.txt");
-fn sanitize_word(word: &str) -> String {
-    word.trim()
-        .to_uppercase()
-        .chars()
-        .filter(|c| c.is_ascii_alphabetic())
-        .collect()
-}
-
-// returns a vector of all the words in the file
-fn words_list() -> Vec<String> {
-    ALL_WORDS
-        .split('\n')
-        .map(sanitize_word)
-        .collect()
-}
-
-struct Game {
-    dictionary: Vec<String>,
-    word: String,
-    guesses: Vec<String>,
-}
-
-impl Game {
-    fn new() -> Self {
-        let dictionary = words_list();
-        let word = dictionary.choose(&mut rand::thread_rng()).unwrap().to_string();
-        let guesses = vec![];
-        Game {
-            dictionary,
-            word,
-            guesses,
->>>>>>> 7225ea09c47afee4b85b5e774608e99aeb104b3e
         }
     }
 }
-
-<<<<<<< HEAD
+        
 fn display_format(word: String, actual_word: String) {
     word.chars().enumerate().for_each(|(pos, c)| {
         let display = if actual_word.chars().nth(pos).unwrap() == c { 
@@ -88,7 +50,7 @@ fn display_format(word: String, actual_word: String) {
 }
 
 fn main() {
-    println!("Hello, world!");
+    println!("Welcome to RWordle! You have 6 tries to guess a 5 letter word. Good luck!");
 
     let words = words_list(); 
     let hash: HashMap<&'static str, i32> = words.clone()
@@ -128,8 +90,4 @@ fn main() {
         if again.trim().to_lowercase().chars().next().unwrap() == 'y' { continue; } 
         else { break; }
     }
-=======
-fn main() {
-    println!("Hello, world!");
->>>>>>> 7225ea09c47afee4b85b5e774608e99aeb104b3e
 }
